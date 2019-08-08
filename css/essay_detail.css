@@ -1,0 +1,198 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.head{
+    width: 100%;
+    height: 56px;
+    background-color: #FFF;
+}
+.head .head-wrapper{
+    width: 70%;
+    height: 100%;
+}
+
+/*小米风格*/
+/*标题*/
+.body{
+
+}
+.body .body-wrapper{
+    width: 728px;
+    margin: 0 auto;
+}
+.body h3{
+    color:#ff8b3d;
+    font-size: 22px;
+}
+/*小标题*/
+.body h4{
+    font-family: 微软雅黑;
+    font-size: 10.5pt;
+    font-weight: bold;
+    color: rgb(239, 83, 80);
+    line-height: 28px;
+}
+/*正文*/
+.body p{
+    font-family: 微软雅黑;
+    font-size: 10.5pt;
+    line-height: 28px;
+    color:#2f2f2f;
+}
+
+/*简书风格*/
+/*标题*/
+h3{
+    font-weight: 700;
+    font-size: 16px;
+    color: #2f2f2f;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+/*正文*/
+p{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #2f2f2f;
+    margin-bottom: 25px;
+}
+.head .nav{
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+}
+.head .logo-group span{
+    color: #F0725C;
+    font-size: 26px;
+    line-height: 56px;
+}
+.head .logo-group{
+    float: left;
+}
+.head .menu{
+    margin-left: 150px;
+    float: left;
+    list-style: none;
+    overflow: hidden;
+}
+.head .menu li{
+    height: 56px;
+    float: left;
+    line-height: 56px;
+    /*padding: 5px;*/
+    box-sizing: border-box;
+    margin-right: 30px;
+    font-size: 17px;
+    font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+}
+
+.btn-pay{
+    margin-bottom: 20px;
+    padding: 8px 25px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ea6f5a;
+    border-radius: 20px;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.author span{
+    margin-top: 5px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #c8c8c8;
+    box-sizing: border-box;
+}
+
+.pub-comment a{
+    margin-right: 5px;
+    width: 38px;
+    height: 38px;
+    vertical-align: middle;
+    display: inline-block;
+    box-sizing: border-box;
+}
+.pub-comment a img{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+}
+.pub-comment textarea{
+    padding: 10px 15px;
+    width: 100%;
+    height: 80px;
+    font-size: 13px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    background-color: hsla(0,0%,71%,.1);
+    resize: none;
+    display: inline-block;
+    vertical-align: top;
+    outline-style: none;
+    line-height: inherit;
+}
+.comment-title span{
+    font-size: 17px;
+    font-weight: 700;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    box-sizing: border-box;
+    vertical-align:middle;
+    display: inline-block;
+}
+
+.authour-wrapper{
+    overflow: hidden;
+}
+.avator{
+    width: 43px;
+    height: 43px;
+    float: left;
+}
+.avator img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.info{
+    float: left;
+    margin-left: 8px;
+}
+.info a{
+    font-size: 15px;
+    color: #333;
+    cursor: pointer;
+    text-decoration: none;
+}
+.meta span{
+    font-size: 12px;
+    color: #969696;
+}
+.comment p{
+    font-size: 16px;
+    margin: 10px 0;
+    line-height: 1.5;
+    word-break: break-word!important;
+}
+.tool-group a{
+    font-size: 14px;
+    vertical-align: middle;
+    text-decoration: none;
+    color: #969696;
+}
+.ul{
+    width: 620px;
+    margin-left: 500px;
+    list-style: none;
+}
+.ul li{
+    padding:  20px 0px 30px 0px;
+    border-bottom: 1px solid #f0f0f0;
+}
