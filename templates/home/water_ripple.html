@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../css/home/water_ripple.css">
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <div id="wrap">
+     <h1>Android L Ripple Effect</h1>
+     <div id="main">
+         <div class="button">BUTTON</div>
+          <button class="button">BUTTON</button>
+          <button class="button">BUTTON</button>
+          <button class="button">BUTTON</button>
+          <button class="button">BUTTON</button>
+     </div>
+</div>
+    <script>
+        $(function(){
+            $("button").click(function(e){
+                var target = e.target;
+                // if (target.tagName.toLowerCase() !== 'button') return false;
+                var rect = target.getBoundingClientRect();
+                var ripple = target.querySelector('.ripple');
+                if (!ripple) {
+                    ripple = document.createElement('span');
+                    ripple.className = 'ripple';
+                    ripple.style.height = ripple.style.width = Math.max(rect.width, rect.height) + 'px';
+                    target.appendChild(ripple);
+                }
+                ripple.classList.remove('show');
+                var top = e.pageY - rect.top - ripple.offsetHeight / 2 - document.body.scrollTop;
+                var left = e.pageX - rect.left - ripple.offsetWidth / 2 - document.body.scrollLeft;
+                ripple.style.top = top + 'px';
+                ripple.style.left = left + 'px';
+                ripple.classList.add('show');
+                return false;
+            });
+        })
+        // var addRippleEffect = function (e) {
+        //         var target = e.target;
+        //         if (target.tagName.toLowerCase() !== 'button') return false;
+        //         var rect = target.getBoundingClientRect();
+        //         var ripple = target.querySelector('.ripple');
+        //         if (!ripple) {
+        //             ripple = document.createElement('span');
+        //             ripple.className = 'ripple';
+        //             ripple.style.height = ripple.style.width = Math.max(rect.width, rect.height) + 'px';
+        //             target.appendChild(ripple);
+        //         }
+        //         ripple.classList.remove('show');
+        //         var top = e.pageY - rect.top - ripple.offsetHeight / 2 - document.body.scrollTop;
+        //         var left = e.pageX - rect.left - ripple.offsetWidth / 2 - document.body.scrollLeft;
+        //         ripple.style.top = top + 'px';
+        //         ripple.style.left = left + 'px';
+        //         ripple.classList.add('show');
+        //         return false;
+        //     };
+        // document.addEventListener('click', addRippleEffect, false);
+    </script>
+</body>
+</html>
