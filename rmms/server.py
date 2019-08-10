@@ -12,9 +12,11 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from wsgiref.simple_server import make_server
 # import router.application
 from rmms import router
+from rmms import setting
 
-httpd = make_server('', 8000, router.application)
-print('Serving HTTP on port 8000...')
+
+httpd = make_server(setting.HOST[0], setting.PORT, router.application)
+print(f"Serving HTTP on port {setting.HOST[0]}:{setting.PORT}...")
 print('please enter Ctrl+C to break...')
 # 开始监听HTTP请求:
 httpd.serve_forever()
