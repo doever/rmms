@@ -13,10 +13,10 @@ PORT = 8088
 TEMPLATE_PATH = os.path.join(BASE_PATH, 'templates')
 
 
-JS_PATH = os.path.join(BASE_PATH, 'js')
-CSS_PATH = os.path.join(BASE_PATH, 'css')
-IMAGE_PATH = os.path.join(BASE_PATH, 'images')
+# JS_PATH = os.path.join(BASE_PATH, 'js').replace("\\","/")
+# CSS_PATH = os.path.join(BASE_PATH, 'css').replace("\\","/")
+# IMAGE_PATH = os.path.join(BASE_PATH, 'images').replace("\\","/")
 IMAGE_FORMAT = ['jpg', 'png']
 
 if __name__ == '__main__':
-    print(TEMPLATE_PATH)
+    print(BASE_PATH)

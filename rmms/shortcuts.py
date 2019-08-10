@@ -9,7 +9,8 @@ import json
 from urllib import parse
 from io import StringIO
 
-import setting
+from rmms import setting
+from rmms.tools import print_log
 
 
 def renter(file_name, user="default", username="未登录"):
@@ -21,16 +22,20 @@ def renter(file_name, user="default", username="未登录"):
         print(f"render path is wrong:\n{file_name}")
     else:
         html = os.path.join(file_path, app_name, html_name)
-        with open(html, 'r') as fp:
-            text = fp.read()
-            text = text.replace("^user^", user)
-            text = text.replace("^username^", username)
-            fp.close()
-            return {
-                'code': "200 OK",
-                'content_type': 'text/html',
-                'content': text
-            }
+        with open(html, 'r', encoding='utf-8') as fp:
+            try:
+                text = fp.read()
+                text = text.replace("^user^", user)
+                text = text.replace("^username^", username)
+            except UnicodeDecodeError as err:
+                print_log(renter.__name__, err)
+            else:
+                fp.close()
+                return {
+                    'code': "200 OK",
+                    'content_type': 'text/html',
+                    'content': text
+                }
 
 
 def json_response(data):
