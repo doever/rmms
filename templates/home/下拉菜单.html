@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        nav {background: #fff;}
+        nav ul {
+          margin: 0;
+          padding: 0;
+        }
+        nav ul li {
+          display: inline-block;
+          position: relative;
+            width: 90px;
+
+        }
+        nav ul li a {
+          color: #333;
+          display: block;
+          font-size: 17px;
+          padding: 15px 14px;
+          transition: 0.3s linear;
+        }
+        nav ul li:hover {background: #f2f2f2;}
+        nav ul li ul {
+          display: none;
+          position: absolute;
+          width: 120px;
+        }
+        nav ul li ul li {
+            border-bottom: 1px solid #d2d2d2;
+            display: block
+        }
+
+        nav ul li ul li a {
+            background-color: #fff;
+              display: block;
+              padding: 10px 14px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        nav ul li ul li a:hover {background: red;}
+    </style>
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div class="head">
+    <nav>
+      <div class="container">
+        <ul>
+          <li><a href="#">首页</a></li>
+          <li><a href="#">发现</a></li>
+          <li>
+            <a href="#">消息(<span style="color:red">9</span>)</a>
+            <ul>
+              <li><a href="#">评论</a></li>
+              <li><a href="#">收藏</a></li>
+              <li><a href="#">喜欢</a></li>
+            </ul>
+          </li>
+          <li><input type="text"></li>
+        </ul>
+      </div>
+    </nav>
+</div>
+</body>
+<script>
+    $(function(){
+    $('nav li').hover(
+      function() {
+          $('ul',this).stop().slideDown(200);
+      },
+        function() {
+        $('ul',this).stop().slideUp(200);
+      }
+    );
+    })
+</script>
+</html>

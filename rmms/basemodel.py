@@ -11,13 +11,15 @@ class BaseModel(object):
     '''数据库基类，定义一些公共方法'''
     def __init__(self, db):
         self.conn = sqlite3.connect(db)
-        self.cursor = self.conn()
+        self.cursor = self.conn.cursor()
 
     def execute_sql(self, sql):
         try:
             self.cursor.execute(sql)
         except Exception as err:
-            print_log("execute_sql", "执行sql报错：" + err)
+            print_log("execute_sql", "执行sql报错：" + str(err))
+            # self.cursor.close()
+            # self.conn.close()
         else:
             pass
 

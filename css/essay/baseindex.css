@@ -1,0 +1,78 @@
+.dropdown-toggle{
+
+}
+.dropdown-toggle .dropdown-menu{
+    position: absolute;
+    z-index: 10000;
+    /*top: 100%;*/
+    /*left: 0;*/
+    /*z-index: 1000;*/
+    /*display: block;*/
+    /*float: left;*/
+    /*min-width: 160px;*/
+    /*padding: 5px 0;*/
+    /*margin: 2px 0 0;*/
+    /*list-style: none;*/
+    /*font-size: 14px;*/
+    /*text-align: left;*/
+    /*background-color: #fff;*/
+    /*border: 1px solid rgba(0,0,0,.15);*/
+    /*background-clip: padding-box;*/
+    /*margin-top: 0;*/
+    /*box-shadow: 0 2px 8px rgba(0,0,0,.1);*/
+    /*filter: drop-shadow(0 2px 8px rgba(0,0,0,.1));*/
+    /*-webkit-filter: drop-shadow(0 2px 8px rgba(0,0,0,.1));*/
+}
+
+body{
+    font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+}
+
+.head{
+    width: 100%;
+    height: 56px;
+    /*position: fixed;*/
+    background-color: #fff;
+    border-bottom: 1px solid #d2d2d2;
+}
+
+.head nav{
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+nav .logo{
+    float: left;
+}
+nav .logo span{
+    color: #F0725C;
+    font-size: 26px;
+    line-height: 56px;
+}
+
+nav .menu{
+    margin-left: 150px;
+    float: left;
+    list-style: none;
+    overflow: hidden;
+}
+nav .menu li{
+    float: left;
+    height: 56px;
+    line-height: 56px;
+    /*padding: 5px;*/
+    box-sizing: border-box;
+    margin-right: 30px;
+    font-size: 17px;
+    color: #333;
+    cursor: pointer;
+}
+
+nav .pub-essay{
+    float: right;
+}
+nav .user-box{
+    float: right;
+}

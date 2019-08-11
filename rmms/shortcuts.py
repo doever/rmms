@@ -13,8 +13,9 @@ from rmms import setting
 from rmms.tools import print_log
 
 
-def renter(file_name, user="default", username="未登录"):
+def renter(file_name, content={"time": "no"}):
     file_path = setting.TEMPLATE_PATH
+    res = {}
     try:
         app_name = file_name.split(":")[0]
         html_name = file_name.split(":")[1]
@@ -23,19 +24,17 @@ def renter(file_name, user="default", username="未登录"):
     else:
         html = os.path.join(file_path, app_name, html_name)
         with open(html, 'r', encoding='utf-8') as fp:
-            try:
-                text = fp.read()
-                text = text.replace("^user^", user)
-                text = text.replace("^username^", username)
-            except UnicodeDecodeError as err:
-                print_log(renter.__name__, err)
-            else:
-                fp.close()
-                return {
-                    'code': "200 OK",
-                    'content_type': 'text/html',
-                    'content': text
-                }
+            text = fp.read()
+            fp.close()
+            res = {
+                'code': "200 OK",
+                'content_type': 'text/html',
+                'content': text
+            }
+            if isinstance(content, dict) and isinstance(content.get("cookie"), dict):
+                res.update(content.get("cookie"))
+
+    return res
 
 
 def json_response(data):

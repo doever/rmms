@@ -13,10 +13,14 @@ from rmms.essay.view import *
 
 
 url = [
-        # 首页
-        ('/index', index),
         # 登录页面
-        ('/login', index),
+        ('/login', login),
+        # 首页
+        ('/essay_index', index),
+        # 文章详情页
+        ('/essay_detail', essay_detail),
+        # 发布文章
+        ('/pub_essay', pub_essay),
        ]
 
 if __name__ == '__main__':

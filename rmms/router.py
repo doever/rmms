@@ -32,10 +32,13 @@ def application(environ, start_response):
     request.GET = parse_di(environ.get('QUERY_STRING'))
     # 构造request post请求参数
     request.POST = parse_di(environ.get('wsgi.input').read(int(length)).decode())
+    request.cookie = environ.get('HTTP_COOKIE') or ''
+    request.user = parse_di(request.cookie)
 
     res = {}
     for i in range(len(urls)):
         if urls[i][0] == request.path:
+            tprint(urls[i][0])
             res = urls[i][1](request)
             break
         else:
@@ -64,11 +67,18 @@ def application(environ, start_response):
     if not res:
         return error_404(start_response, request.path)
 
-    del request
     code = res.get('code')
     content_type = res.get('content_type')
     content = res.get('content')
-    start_response(code, [('Content-Type', content_type)])
+    cookie = res.get('cookie')
+    if cookie:
+        start_response(code, [('Content-Type', content_type), ('set-cookie', cookie)])
+    elif request.cookie:
+        start_response(code, [('Content-Type', content_type), ('set-cookie', request.cookie)])
+    else:
+        start_response(code, [('Content-Type', content_type)])
+
+    del request
 
     return [bytes(content, encoding="utf-8")]
 
