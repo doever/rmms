@@ -22,12 +22,8 @@ def essay_detail(request):
     else:
         return ''
 
-def test():
-    print("test ok!!")
-
-
 
 if __name__ == '__main__':
-    test()
+    print("test ok!!")
 
 

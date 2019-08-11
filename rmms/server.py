@@ -14,8 +14,6 @@ from wsgiref.simple_server import make_server
 from rmms import router
 from rmms import setting
 
-from rmms.essay.view import test
-test()
 
 httpd = make_server(setting.HOST[0], setting.PORT, router.application)
 print(f"Serving HTTP on port {setting.HOST[0]}:{setting.PORT}...")

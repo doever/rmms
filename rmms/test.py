@@ -13,7 +13,8 @@ import sys
 
 # print(locale.getpreferredencoding(False))
 
-import sched, time
+import sched
+import time
 
 s = sched.scheduler(time.time, time.sleep)
 
@@ -30,10 +31,12 @@ def print_some_times():
     s.run()
     print(time.time())
 
+
 def handle_schedule():
     s.enter(3, 1, print_time)
     print(time.time())
     s.run()
+
 
 while True:
     handle_schedule()

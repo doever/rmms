@@ -42,6 +42,7 @@ def print_info(s):
     print(s)
     print("*" * 30 + "INFO" + "*" * 30)
 
+
 if __name__ == '__main__':
     print_log("main", "调用函数发送错误")
 
