@@ -87,10 +87,6 @@ def handle_static(path):
     ''''处理js、css文件'''
     static_file = setting.BASE_PATH
     file_path_li = path.split("/")
-    if re.search('\?', path):
-        print_info(f"{path}静态文件刷新")
-        file_path_li[-1] = file_path_li[-1].split("?")[0]
-
     for i in file_path_li:
         static_file = os.path.join(static_file, i)
 
@@ -102,8 +98,8 @@ def handle_static(path):
 
 
 def handle_image(path):
-    path_li = path.split('/')
     image = setting.IMAGE_PATH
+    path_li = path.split('/')
     for i in path_li:
         image = os.path.join(image, i)
     with open(image, 'rb') as f:
