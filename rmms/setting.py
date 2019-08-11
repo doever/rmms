@@ -24,7 +24,7 @@ DATABASE = {
 
 # JS_PATH = os.path.join(BASE_PATH, 'js').replace("\\","/")
 # CSS_PATH = os.path.join(BASE_PATH, 'css').replace("\\","/")
-IMAGE_PATH = os.path.join(BASE_PATH, 'images').replace("\\","/")
+IMAGE_PATH = os.path.join(BASE_PATH, 'images').replace("\\", "/")
 IMAGE_FORMAT = ['jpg', 'png']
 
 if __name__ == '__main__':

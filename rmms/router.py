@@ -45,13 +45,14 @@ def application(environ, start_response):
             continue
     else:
         code = '200 OK'
+        a = request.path[-3:]
         if re.search(r'.css', request.path):
             content_type = "text/css"
             content = handle_static(request.path)
         elif re.search(r'.js', request.path):
             content_type = "application/x-javascript"
             content = handle_static(request.path)
-        elif request.path[-3:0] in setting.IMAGE_FORMAT:
+        elif request.path[-3:] in setting.IMAGE_FORMAT:
             content_type = "image/jpeg"
             content = handle_image(request.path)
             start_response(code, [('Content-Type', content_type)])
@@ -98,7 +99,7 @@ def handle_static(path):
 
 
 def handle_image(path):
-    image = setting.IMAGE_PATH
+    image = setting.BASE_PATH
     path_li = path.split('/')
     for i in path_li:
         image = os.path.join(image, i)

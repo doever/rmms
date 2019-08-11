@@ -39,7 +39,7 @@ def essay_detail(request):
 def pub_essay(request):
     '''发表文章'''
     if request.method == "GET":
-        return renter("essay:essay_detail.html")
+        return renter("essay:pub_essay.html")
     else:
         return renter("essay:essay_detail.html")
 
