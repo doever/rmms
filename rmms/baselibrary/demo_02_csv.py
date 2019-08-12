@@ -25,7 +25,7 @@ def test_writer():
 
 
 def test_writer_2():
-    with open('data.csv', 'w', newline='') as file:
+    with open('mydata.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['id', 'name', 'age'])
         writer.writerow(['10002', 'LiSi', '20'])
