@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 # -*- coding:utf-8 -*-
-__author__ = 'doever'
-__date__ = '2019/8/11 9:51'
 
 '''
 测试sched库demo示例
