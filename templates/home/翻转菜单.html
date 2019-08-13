@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .head{
+            height: 40px;
+        }
+        .nav{
+            width: 400px;
+            height: 40px;
+            margin: 0 auto;
+            border: 1px solid #000;
+            float: left;
+        }
+        .nav>li{
+            list-style: none;
+            width: 120px;
+            height: 40px;
+            margin-left: 10px;
+            background-color: #FF7e00;
+            float: left;
+            text-align: center;
+            line-height: 40px;
+            position: relative;
+        }
+        .sub{
+            width: 120px;
+            position: absolute;
+            left: 0;
+            top: 40px;
+        }
+        .sub>li{
+            list-style: none;
+            cursor: pointer;
+            background-color: #fff;
+            transform: rotateY(180deg);
+            transition: all 1s;
+            opacity: 0;
+        }
+
+        .nav>li:hover .sub>li{
+            transform: none;
+            opacity: 1;
+        }
+        .sub>li:hover{
+            background-color: skyblue;
+        }
+
+        /*延迟效果*/
+        .nav>li:hover .sub>li:nth-child(1){
+            transition-delay: 0ms;
+        }
+        .nav>li:hover .sub>li:nth-child(2){
+            transition-delay: 200ms;
+        }
+        .nav>li:hover .sub>li:nth-child(3){
+            transition-delay: 400ms;
+        }
+        .nav>li:hover .sub>li:nth-child(4){
+            transition-delay: 600ms;
+        }
+        .nav>li:hover .sub>li:nth-child(5){
+            transition-delay: 800ms;
+        }
+        .sub>li:nth-child(5){
+            transition-delay: 0ms;
+        }
+        .sub>li:nth-child(4){
+            transition-delay: 200ms;
+        }
+        .sub>li:nth-child(3){
+            transition-delay: 400ms;
+        }
+        .sub>li:nth-child(2){
+            transition-delay: 600ms;
+        }
+        .sub>li:nth-child(1){
+            transition-delay: 800ms;
+        }
+        .text{
+            background-color: #d4a1a1;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+<div class="head">
+    <ul class="nav">
+        <li>一级菜单
+            <ul class="sub">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+        <li>一级菜单
+            <ul class="sub">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+        <li>一级菜单
+            <ul class="sub">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="text">我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章
+我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章
+我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章</div>
+</body>
+</html>
