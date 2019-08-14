@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        textarea{
+            width: 500px;
+            height: 200px;
+        }
+    </style>
+    <script src="../../static/js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div>
+    <textarea name="" id="src"></textarea>
+</div>
+<div><button>运行</button></div>
+<div>
+    <textarea name="" id="dist"></textarea>
+</div>
+<script>
+    $(function(){
+        $("button").click(function(){
+            var src = $("#src").val();
+            // var p = new RegExp("s$", ['i','g','m']);
+            // var dist = src.replace(/ /igm, '我是空格');
+            var dist = src.replace(/\n/igm, '我是回车');
+            $("#dist").val(dist);
+        })
+    })
+</script>
+</body>
+</html>
