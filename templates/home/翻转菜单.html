@@ -44,51 +44,60 @@
             opacity: 0;
         }
 
-        .nav>li:hover .sub>li{
-            transform: none;
-            opacity: 1;
-        }
+        /*此处hover事件有个BUG；底部透明的二级菜单元素被聚焦时也会触发hover事件，因为是对外部的li加hover事件*/
+        /*在外部li加个子元素a和二级菜单并列，对a进行hover；发现hover事件无法被触发，猜测是css hover的机制，只能是hover元素的子元素，才可以进行hover事件*/
+
+
+        /*.nav>li:hover .sub>li{*/
+            /*transform: none;*/
+            /*opacity: 1;*/
+        /*}*/
         .sub>li:hover{
             background-color: skyblue;
         }
+        /*.aa:hover{*/
+            /*color:red;*/
+        /*}*/
 
         /*延迟效果*/
-        .nav>li:hover .sub>li:nth-child(1){
-            transition-delay: 0ms;
-        }
-        .nav>li:hover .sub>li:nth-child(2){
-            transition-delay: 200ms;
-        }
-        .nav>li:hover .sub>li:nth-child(3){
-            transition-delay: 400ms;
-        }
-        .nav>li:hover .sub>li:nth-child(4){
-            transition-delay: 600ms;
-        }
-        .nav>li:hover .sub>li:nth-child(5){
-            transition-delay: 800ms;
-        }
-        .sub>li:nth-child(5){
-            transition-delay: 0ms;
-        }
-        .sub>li:nth-child(4){
-            transition-delay: 200ms;
-        }
-        .sub>li:nth-child(3){
-            transition-delay: 400ms;
-        }
-        .sub>li:nth-child(2){
-            transition-delay: 600ms;
-        }
-        .sub>li:nth-child(1){
-            transition-delay: 800ms;
-        }
+        /*.nav>li:hover .sub>li:nth-child(1){*/
+            /*transition-delay: 0ms;*/
+        /*}*/
+        /*.nav>li:hover .sub>li:nth-child(2){*/
+            /*transition-delay: 200ms;*/
+        /*}*/
+        /*.nav>li:hover .sub>li:nth-child(3){*/
+            /*transition-delay: 400ms;*/
+        /*}*/
+        /*.nav>li:hover .sub>li:nth-child(4){*/
+            /*transition-delay: 600ms;*/
+        /*}*/
+        /*.nav>li:hover .sub>li:nth-child(5){*/
+            /*transition-delay: 800ms;*/
+        /*}*/
+        /*.sub>li:nth-child(5){*/
+            /*transition-delay: 0ms;*/
+        /*}*/
+        /*.sub>li:nth-child(4){*/
+            /*transition-delay: 200ms;*/
+        /*}*/
+        /*.sub>li:nth-child(3){*/
+            /*transition-delay: 400ms;*/
+        /*}*/
+        /*.sub>li:nth-child(2){*/
+            /*transition-delay: 600ms;*/
+        /*}*/
+        /*.sub>li:nth-child(1){*/
+            /*transition-delay: 800ms;*/
+        /*}*/
         .text{
             background-color: #d4a1a1;
             width: 400px;
             height: 400px;
         }
+
     </style>
+    <script src="../../static/js/jquery-3.1.1.min.js"></script>
 </head>
 <body>
 <div class="head">
@@ -102,7 +111,8 @@
                 <li>二级菜单</li>
             </ul>
         </li>
-        <li>一级菜单
+        <li>
+            <a class="aa">一级菜单</a>
             <ul class="sub">
                 <li>二级菜单</li>
                 <li>二级菜单</li>
@@ -122,8 +132,24 @@
         </li>
     </ul>
 </div>
-<div class="text">我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章
+<div class="text">
+    我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章
 我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章
-我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章</div>
+我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章
+</div>
+<script>
+    $(function(){
+        $(".aa").hover(function(){
+            $(this).siblings(".sub").find("li").css({
+                "transform":"none",
+                "opacity":"1"
+            });
+        },function(){
+            $(this).siblings(".sub").find("li").css({
+                "opacity":"0"
+            });
+        })
+    })
+</script>
 </body>
 </html>
