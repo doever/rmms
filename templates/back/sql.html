@@ -5,6 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="../../static/css/essay/init.min.css">
     <link rel="stylesheet" href="../../static/css/back/sql.css">
+    <link rel="stylesheet" href="../../static/css/back/common.css">
     <script src="../../static/js/jquery-3.1.1.min.js"></script>
     <script src="../../static/layer/layer.js"></script>
 </head>
@@ -12,11 +13,75 @@
 <div class="head"></div>
 <div class="body">
     <h1>SQL接口:</h1>
-    <textarea name="" id=""></textarea>
+    <textarea name="" id="sql" placeholder="用户表:user
+文章表：essay"></textarea>
+    <div>
+        <button class="run-sql com-btn info" action="run">运行SQL</button>
+        <button class="run-sql com-btn warnning" action="check">SQL检查</button>
+        <p class="title">查询结果:</p>
+    </div>
+
     <table class="result-table">
-        <thead></thead>
-        <tbody></tbody>
+        <thead class="thead">
+        </thead>
+        <tbody class="tbody">
+        </tbody>
     </table>
 </div>
+<script>
+    $(function(){
+        $(".run-sql").click(function(){
+            var sql = $("#sql").val();
+            var action = $(this).attr("action");
+            $.ajax({
+                url:"/run_sql",
+                type:"POST",
+                data:{
+                    "sql": sql,
+                    "action": action
+                },
+                dataType:"json",
+                success:function(result){
+                    if(result['code']===200){
+                        if(action=="check"){
+                            layer.msg(result['message']);
+                        }else{
+                            if(sql.trim().slice(0,6) == "select"){
+                                //插入查询结果
+                                $(".thead").empty();
+                                $(".tbody").empty();
+                                var res = result['data']['res'];
+                                var cols = result['data']['cols'];
+                                var oThr = $("<tr></tr>");
+                                for(var j=0;j<cols.length;j++){
+                                    var oTd = $("<td>" + cols[j] + "</td>");
+                                    $(oThr).append($(oTd));
+                                }
+
+                                $(".thead").append($(oThr));
+                                for(var i=0;i<res.length;i++){
+                                    var oTbr = $("<tr></tr>");
+                                    for(var k=0;k<res[i].length;k++){
+                                        var oTbd = $("<td>" + res[i][k] + "</td>");
+                                        $(oTbr).append($(oTbd));
+                                    }
+                                    $(".tbody").append($(oTbr));
+                                }
+                            }else{
+                                layer.msg("语句执行成功");
+                            }
+                        }
+                    }else{
+                        layer.msg(result['message']);
+                    }
+
+                },
+                error:function(error){
+                    layer.msg("服务器发生错误");
+                }
+            });
+        })
+    })
+</script>
 </body>
 </html>

@@ -1,0 +1,33 @@
+.com-btn{
+    width: 120px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    outline: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    color: #FFF;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    box-sizing: border-box;
+}
+.primary{
+    background-color: #337ab7;
+}
+.warnning{
+    background-color: #f0ad4e;
+}
+.dangerous{
+    background-color: red;
+}
+.info{
+    background-color: skyblue;
+}
+.com-btn:hover{
+    box-shadow: 0 0 10px #000;
+}
+.shadow{
+    box-shadow: 0 0 10px #000;
+}

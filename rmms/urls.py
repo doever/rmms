@@ -7,7 +7,7 @@ from essay.url import url as essay_url
 from home.url import url as home_url
 from back.url import url as back_url
 
-urls = essay_url + home_url
+urls = essay_url + home_url + back_url
 
 
 if __name__ == '__main__':

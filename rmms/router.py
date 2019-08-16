@@ -5,6 +5,7 @@ __date__ = '2019/8/7 20:48'
 
 import os
 import re
+from urllib import parse
 from io import BytesIO
 
 import setting
@@ -21,6 +22,14 @@ class Request():
         self.GET = {}
         self.POST = {}
 
+    @staticmethod
+    def url_decode(_s):
+        '''urlencode解码'''
+        if _s:
+            d = "keys=" + _s
+            return parse.parse_qs(d)['keys'][0]
+        return _s
+
 
 def application(environ, start_response):
     # for k, v in environ.items():
@@ -35,6 +44,7 @@ def application(environ, start_response):
     request.GET = parse_di(environ.get('QUERY_STRING'))
     # 构造request post请求参数
     request.POST = parse_di(environ.get('wsgi.input').read(int(length)).decode())
+    request.POST = {k: request.url_decode(v) for k, v in request.POST.items()}
     request.cookie = environ.get('HTTP_COOKIE') or ''
     request.user = parse_di(request.cookie)
 

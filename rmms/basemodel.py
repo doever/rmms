@@ -5,6 +5,7 @@ __date__ = '2019/8/11 11:58'
 
 import sqlite3
 from tools import print_log
+from setting import DATABASE
 
 
 class BaseModel(object):
@@ -40,6 +41,16 @@ class BaseModel(object):
         self.execute_sql(sql)
         self.conn.commit()
 
+
+class Model(BaseModel):
+    # def __init__(self, db):
+    #     super()
+
+    def __str__(self):
+        return "essay model object"
+
+
+db = Model(DATABASE.get("essay"))
 
 if __name__ == '__main__':
     print_log('xxx', 'error')

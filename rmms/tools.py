@@ -11,14 +11,6 @@ from urllib import parse
 '''
 
 
-def url_decode(s):
-    '''urlencode解码'''
-    if s:
-        d = "keys=" + s
-        return parse.parse_qs(d)['keys'][0]
-    return s
-
-
 def print_log(function_name, error_message):
     '''
         # 错误日志打印格式

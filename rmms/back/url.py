@@ -13,6 +13,7 @@ from rmms.back.view import *
 url = [
         # sql页面
         ('/sql', sql),
+        ('/run_sql', run_sql),
        ]
 
 

@@ -13,7 +13,7 @@ from rmms import setting
 from rmms.tools import print_log
 
 
-def renter(file_name, content={"time": "no"}):
+def renter(file_name, content=None):
     file_path = setting.TEMPLATE_PATH
     res = {}
     try:
@@ -41,5 +41,5 @@ def json_response(data):
     return {
         'code': "200 OK",
         'content_type': 'json',
-        'content': data
+        'content': json.dumps(data)             # {code:200,message="",data={}}
     }
