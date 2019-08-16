@@ -96,6 +96,29 @@
             height: 400px;
         }
 
+
+    .fu{
+        width: 200px;
+        height: 200px;
+        background-color: #f00;
+    }
+    .zi{
+        width: 100px;
+        height: 100px;
+        background-color: #0f0;
+    }
+    .sibling{
+        width: 100px;
+        height: 100px;
+        background-color: #00f;
+    }
+    /*无效，若要实现此效果，请用js*/
+    /*.fu:hover .sibling{*/
+        /*background-color: #FF7E00;*/
+    /*}*/
+    .fu:hover .zi{
+        background-color: #FF7E00;
+    }
     </style>
     <script src="../../static/js/jquery-3.1.1.min.js"></script>
 </head>
@@ -137,6 +160,21 @@
 我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章
 我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章我是文章
 </div>
+
+<div class="fu">
+    <div class="zi"></div>
+</div>
+<div class="sibling"></div>
+<script>
+    //需要加载jquery
+    $(function(){
+        $(".fu").hover(function(){
+            $(".sibling").css({"backgroundColor":"#FF7E00"});
+        },function(){
+            $(".sibling").css({"backgroundColor":"#00F"});
+        });
+    })
+</script>
 <script>
     $(function(){
         $(".aa").hover(function(){

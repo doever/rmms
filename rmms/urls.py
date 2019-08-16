@@ -5,6 +5,7 @@ __date__ = '2019/8/10 10:36'
 
 from essay.url import url as essay_url
 from home.url import url as home_url
+from back.url import url as back_url
 
 urls = essay_url + home_url
 

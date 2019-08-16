@@ -15,6 +15,9 @@ from tools import print_log, tprint, print_info
 class Request():
     def __init__(self):
         self.method = ''
+        self.path = ''
+        self.content_type = ''
+        self.cookie = {}
         self.GET = {}
         self.POST = {}
 

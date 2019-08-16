@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/rmms/essay" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rmms" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rmms/home" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rmms/back" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.6" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
