@@ -69,7 +69,7 @@
 .content-box #inter-button{
     float: left;
 }
-.content-box .submit-btn{
+.content-box .pub-essay-btn{
     float: right;
 }
 .button-box button:hover{
@@ -107,7 +107,7 @@
     height: 400px;
     resize: none;
     box-sizing: border-box;
-    padding: 5px 15px;
+    padding: 10px 15px;
     background-color: #f2f2f2;
     line-height: 1.7;
     outline: none;
@@ -118,7 +118,7 @@
 
 /*inter风格*/
 .ue-inter-box{
-
+    display: none;
 }
 .ue-inter-menu{
     position: absolute;
@@ -138,6 +138,10 @@
     color: #FFF;
     cursor: pointer;
     transition: all .5s;
+}
+
+.ueditor-inter label{
+    cursor: pointer;
 }
 .ue-inter-title{
     transform: rotate(10deg);
@@ -193,12 +197,94 @@
     background-color: #FED417;
 }
 
+.preview-title{
+    padding: 25px 0px;
+}
+
+/*隐藏box*/
+.write-content-box{
+
+}
+.write-content-box .mask{
+    background-color: rgba(0,0,0,0.5);
+}
+.vide{
+    /*display: none;*/
+    width: 500px;
+    height: 300px;
+    background-color: #f2f2f2;
+    padding: 35px 50px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px #000;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -250px;
+    margin-top: -150px;
+    /*transform: translate(-50%,-50%);*/
+    transform: scale(0.2);
+    transition: all .75s;
+}
+.vide>p{
+    font-size: 18px;
+    font-weight: 500;
+    padding-bottom: 15px;
+}
+.vide>textarea{
+    width: 100%;
+    height: 100px;
+    resize: none;
+    padding: 10px;
+    line-height: 1.5;
+    outline: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.vide>div{
+    padding: 10px 20px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+.vide .submit-btn{
+    float: left;
+    margin-left: 20px;
+}
+.vide .channel-btn{
+    float: right;
+    margin-right: 20px;
+}
 
 
 
-
-
-
+/*内容预览*/
+.content-content h3{
+    font-weight: 700;
+    font-size: 16px;
+    color: #2f2f2f;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+/*正文*/
+.content-content p{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #2f2f2f;
+    margin-bottom: 25px;
+}
+/*代码*/
+.content-content code{
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    color:#2f2f2f;
+    font-size: 15px;
+    font-weight: 400;
+    background-color: #f2f2f2;
+    padding: 8px 15px;
+    line-height: 1.5;
+    display: block;
+    margin-bottom: 15px;
+}
 
 
 
