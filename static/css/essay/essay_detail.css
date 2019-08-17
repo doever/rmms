@@ -2,12 +2,12 @@
     padding: 0;
     margin: 0;
 }
-.head{
+.body{
     width: 100%;
     height: 56px;
     background-color: #FFF;
 }
-.head .head-wrapper{
+.body .body-wrapper{
     width: 70%;
     height: 100%;
 }
@@ -58,26 +58,26 @@ p{
     color: #2f2f2f;
     margin-bottom: 25px;
 }
-.head .nav{
+.body .nav{
     width: 80%;
     height: 100%;
     margin: 0 auto;
 }
-.head .logo-group span{
+.body .logo-group span{
     color: #F0725C;
     font-size: 26px;
     line-height: 56px;
 }
-.head .logo-group{
+.body .logo-group{
     float: left;
 }
-.head .menu{
+.body .menu{
     margin-left: 150px;
     float: left;
     list-style: none;
     overflow: hidden;
 }
-.head .menu li{
+.body .menu li{
     height: 56px;
     float: left;
     line-height: 56px;

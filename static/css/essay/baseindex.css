@@ -4,7 +4,6 @@ body{
 
 .head{
     width: 100%;
-    height: 56px;
     /*position: fixed;*/
     background-color: #fff;
     border-bottom: 1px solid #d2d2d2;
@@ -12,9 +11,9 @@ body{
 
 .head nav{
     width: 70%;
-    height: 100%;
+    height: 56px;
     margin: 0 auto;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 nav .logo{
@@ -30,26 +29,49 @@ nav .menu{
     margin-left: 150px;
     float: left;
     list-style: none;
-    overflow: hidden;
+    height: 56px;
+    /*overflow: hidden;*/
 }
-nav .menu li{
+nav .menu>li{
     float: left;
+    width: 100px;
+    text-align: center;
     /*height: 56px;*/
     line-height: 56px;
     /*padding: 5px;*/
     box-sizing: border-box;
-    margin-right: 30px;
     font-size: 17px;
     color: #333;
     cursor: pointer;
 }
+nav .menu>li:hover{
+    background-color: #d2d2d2;
+}
 nav .menu li a{
     color: #333;
 }
-nav .menu li:nth-of-type(4){
-    margin-left: 50px;
+.sub-menu{
+    background-color: #fff;
+    box-shadow: 0 0 10px #000;
+    display: none;
+    opacity: 0;
 }
-nav .menu li input{
+.sub-menu li{
+    /*display: block;*/
+    height: 56px;
+    width: 100px;
+    font-size: 15px;
+    text-align: center;
+}
+.sub-menu li:hover{
+    background-color: #f2f2f2;
+}
+.search{
+    display: inline-block;
+}
+.search input{
+    margin-left: 25px;
+    margin-top: 10px;
     width: 170px;
     height: 35px;
     padding: 2px;
@@ -59,14 +81,12 @@ nav .menu li input{
     box-sizing: border-box;
     border: 1px solid #d2d2d2;
     border-radius: 20px;
-}
-nav .menu li input:focus{
     outline: 0;
 }
 
 nav .pub-essay{
     float: right;
-    margin-right: 150px;
+    margin-right: 50px;
     padding-top: 10px;
 }
 nav .pub-essay button{
@@ -87,7 +107,6 @@ nav .pub-essay button{
 }
 nav .user-box{
     float: right;
-    overflow: hidden;
     height: 56px;
     line-height: 56px;
 }
@@ -105,8 +124,16 @@ nav .user-box .user-avator img{
 }
 nav .user-box .user-info{
     float: left;
-    margin-left: 8px;
+    margin-left: -10px;
+    width: 100px;
+    text-align: center;
 }
 nav .user-box .user-info a{
+
+}
+nav .user-box .user-info .down-menu{
+
+}
+nav .user-box .user-info .down-menu>li{
 
 }

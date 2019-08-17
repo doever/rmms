@@ -9,7 +9,7 @@
     <script src="../../static/js/jquery-3.1.1.min.js"></script>
 </head>
 <body>
-    <div class="head">
+        <div class="head">
         <nav>
             <a href="" class="logo">
                 <span>字抒</span>
@@ -17,18 +17,30 @@
             <ul class="menu">
               <li><a href="#">首页</a></li>
               <li><a href="#">发现</a></li>
-              <li>
-                <a href="#">消息(<span style="color:red">9</span>)</a>
+              <li class="down-box">
+                  <a class="down-toggle">消息(<span style="color:red">9</span>)</a>
+                  <ul class="down-menu sub-menu">
+                      <li>通知</li>
+                      <li>评论(<span style="color: red">3</span>)</li>
+                      <li>关注</li>
+                  </ul>
               </li>
-              <li><input type="text" placeholder="搜索"></li>
+                <li><a href="#">more</a></li>
             </ul>
-
+            <div class="search"><input type="text"></div>
             <div class="user-box">
                 <div class="user-avator">
                     <img src="../../static/images/default.jpg" class="user-img">
                 </div>
-                <div class="user-info">
+                <div class="user-info down-box">
                     <a class="dropdown-toggle">杰克曼</a>
+                    <ul class="down-menu sub-menu">
+                        <li><a href="">我的主页</a></li>
+                        <li><a href="">我的文章</a></li>
+                        <li><a href="">我的收藏</a></li>
+                        <li><a href="">我的关注</a></li>
+                        <li><a href="">退出</a></li>
+                    </ul>
                 </div>
             </div>
             <a href="" class="pub-essay">
