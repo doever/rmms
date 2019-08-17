@@ -5,6 +5,8 @@
     <title>Title</title>
     <link rel="stylesheet" href="../../static/css/essay/init.min.css">
     <link rel="stylesheet" href="../../static/css/essay/baseindex.css">
+    <link rel="stylesheet" href="../../static/css/back/common.css">
+    <link rel="stylesheet" href="../../static/css/essay/pub_essay.css">
     <script src="../../static/js/jquery-3.1.1.min.js"></script>
     <script src="../../static/js/common.js"></script>
 </head>
@@ -27,7 +29,7 @@
               </li>
                 <li><a href="#">more</a></li>
             </ul>
-            <div class="search"><input type="text"></div>
+            <div class="search"><input type="text" placeholder="搜索一下"></div>
             <div class="user-box">
                 <div class="user-avator">
                     <img src="../../static/images/default.jpg" class="user-img">
@@ -50,18 +52,78 @@
     </div>
     <div class="body">
         <div class="main">
-            <div class="ue-group">
-                <ul>
-                    <li class="ueditor">标题</li>
-                    <li class="ueditor">内容</li>
-                    <li class="ueditor">图片</li>
-                    <li class="ueditor">链接</li>
-                    <li class="ueditor">颜色</li>
-                </ul>
+            <div class="form-wrapper">
+                <div class="title-box">
+                    <label>文章标题</label>
+                    <input type="text" class="input-group">
+                </div>
+                <div class="category-box">
+                    <label>文章分类</label>
+                    <select name="category" class="input-group">
+                        <option value="deep">深度</option>
+                        <option value="hot">热门</option>
+                        <option value="technology">科技</option>
+                        <option value="fun">娱乐</option>
+                    </select>
+                </div>
+                <div class="thumbnail-box">
+                    <label class="thumbnail-label">上传缩略图</label>
+                    <div class="input-group upload-box">
+                        <input type="text" name="thumbnail"><label class="com-btn primary">点击上传<input type="file" hidden></label>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <label>编辑内容</label>
+                    <div class="button-box">
+                        <button id="mark-button" class="com-btn info">标记式编辑</button><button id="inter-button" class="com-btn">交互式编辑</button>
+                        <button class="com-btn submit-btn main-color">发布文章</button>
+                    </div>
+                    <div class="ue-mark-box">
+                        <div class="ue-mark-menu">
+                            <ul>
+                                <li class="ueditor ue-mark-title">标题</li>
+                                <li class="ueditor ue-mark-content">内容</li>
+                                <li class="ueditor ue-mark-code">代码</li>
+                                <li class="ueditor ue-mark-img">图片</li>
+                                <li class="ueditor ue-mark-list">列表</li>
+                                <li class="ueditor ue-mark-color">颜色</li>
+                                <li class="ueditor ue-mark-link">链接</li>
+                                <li class="ueditor ue-mark-font">字体</li>
+                                <li class="ueditor ue-mark-bold">加粗</li>
+                            </ul>
+                        </div>
+                        <textarea name="" placeholder="写完记得格式刷一下哦"></textarea>
+                    </div>
+                    <div class="ue-inter-box">
+                        <div class="ue-inter-menu">
+                            <ul>
+                                <li class="ueditor-inter ue-inter-title">标题</li>
+                                <li class="ueditor-inter ue-inter-content">内容</li>
+                                <li class="ueditor-inter ue-inter-code">代码</li>
+                                <li class="ueditor-inter ue-inter-img">图片</li>
+                                <li class="ueditor-inter ue-inter-list">列表</li>
+                                <li class="ueditor-inter ue-inter-color">颜色</li>
+                                <li class="ueditor-inter ue-inter-link">链接</li>
+                                <li class="ueditor-inter ue-inter-font">字体</li>
+                                <li class="ueditor-inter ue-inter-bold">加粗</li>
+                                <li class="ue-inter-type">
+                                    <span class="style-a"></span><span class="style-b"></span><span class="style-c"></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="preview-box">
+                            <div class="preview-title">正文预览</div>
+                            <div class="content"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
+    <script>
+        $(function(){
 
+        })
+    </script>
 </body>
 </html>

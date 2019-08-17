@@ -8,6 +8,7 @@
     font-size: 15px;
     font-weight: 500;
     color: #FFF;
+    cursor: pointer;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -24,6 +25,9 @@
 }
 .info{
     background-color: skyblue;
+}
+.main-color{
+    background-color: #F0725C;
 }
 .com-btn:hover{
     box-shadow: 0 0 10px #000;

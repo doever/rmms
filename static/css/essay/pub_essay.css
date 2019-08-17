@@ -1,3 +1,224 @@
 .body{
+    width: 100%;
+}
+.main{
+    width: 55%;
+    margin: 0 auto;
+}
+.main .form-wrapper{
+    width: 100%;
+    padding: 25px 15px;
+}
+.main .form-wrapper>div{
+    margin-bottom: 15px;
+}
+.main .form-wrapper>div>label:nth-child(1){
+    font-size: 16px;
+    font-weight: 500;
+    display: block;
+}
+.form-wrapper .input-group{
+    display: block;
+    width: 100%;
+    height: 35px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #c2c2c2;
+}
+.form-wrapper .input-group:hover{
+    box-shadow: 0 0 5px #F0725C;
+}
+.title-box input{
+    padding-left: 15px;
+}
+.category-box select{
+    padding-left: 10px;
+}
+.upload-box{
+    text-align: center;
+    overflow: hidden;
+    height: 35px;
+}
+.upload-box>input{
+    height: 99%;
+    box-sizing: border-box;
+    border: none;
+    width: 89%;
+    float: left;
+    outline: none;
+    text-indent: 1em;
+}
+.upload-box>label{
+    display: inline-block;
+    height: 100%;
+    width: 10%;
+    float: right;
+}
+.content-box{
 
 }
+.content-box .button-box{
+    margin-top: 5px;
+    overflow: hidden;
+}
+.content-box #mark-button{
+    float: left;
+}
+.content-box #inter-button{
+    float: left;
+}
+.content-box .submit-btn{
+    float: right;
+}
+.button-box button:hover{
+    box-shadow: none;
+}
+
+/*mark风格*/
+.ue-mark-box{
+
+}
+.ue-mark-menu{
+    margin-top: 15px;
+}
+.ue-mark-menu>ul{
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+.ue-mark-menu>ul>li{
+    height: 25px;
+    width: 35px;
+    float: left;
+    border: 1px solid #F0725C;
+    text-align: center;
+    line-height: 25px;
+    margin-right: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    color:#4d4d4d;
+}
+.ue-mark-menu>ul>li:hover{
+    color: #F0725C;
+}
+.ue-mark-box>textarea{
+    width: 100%;
+    height: 400px;
+    resize: none;
+    box-sizing: border-box;
+    padding: 5px 15px;
+    background-color: #f2f2f2;
+    line-height: 1.7;
+    outline: none;
+    border: 1px solid #c2c2c2;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+/*inter风格*/
+.ue-inter-box{
+
+}
+.ue-inter-menu{
+    position: absolute;
+    left: 25px;
+    bottom: 25px;
+}
+.ue-inter-menu>ul{
+    
+}
+.ueditor-inter{
+    width: 85px;
+    height: 35px;
+    border: none;
+    text-align: center;
+    line-height: 35px;
+    margin-bottom: 15px;
+    color: #FFF;
+    cursor: pointer;
+    transition: all .5s;
+}
+.ue-inter-title{
+    transform: rotate(10deg);
+}
+.ueditor-inter:hover{
+    transform: rotate(360deg);
+    box-shadow: 0 0 10px #000;
+}
+.ue-inter-menu>ul>li:nth-child(1){
+    background-color: #000;
+}
+.ue-inter-menu>ul>li:nth-child(2){
+    background-color: #FFB84F;
+}
+.ue-inter-menu>ul>li:nth-child(3){
+    background-color: #F4E0BD;
+}
+.ue-inter-menu>ul>li:nth-child(4){
+    background-color: #C1E4DE;
+}
+.ue-inter-menu>ul>li:nth-child(5){
+    background-color: #B7D6EC;
+}
+.ue-inter-menu>ul>li:nth-child(6){
+    background-color: #B196B3;
+}
+.ue-inter-menu>ul>li:nth-child(7){
+    background-color: #AAA731;
+}
+.ue-inter-menu>ul>li:nth-child(8){
+    background-color: #2A8BB4;
+}
+.ue-inter-menu>ul>li:nth-child(9){
+    background-color: #B68C98;
+}
+.ue-inter-type{}
+.ue-inter-type>span{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 5px #000;
+    margin-right: 10px;
+}
+.ue-inter-type>span:nth-child(1){
+    background-color: #1AC6D0;
+}
+.ue-inter-type>span:nth-child(2){
+    background-color: #F9B3A8;
+}
+.ue-inter-type>span:nth-child(3){
+    background-color: #FED417;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
