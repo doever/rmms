@@ -24,13 +24,14 @@
     <div class="box5">box5</div>
 </div>
 <button class="btn">移动</button>
-
+<div class="test">456<span>123</span></div>
 <script>
     $(function(){
         $(".btn").click(function(){
             // $(".box3").insertBefore($(".box2"));
             $(".box3").insertBefore($(".box3").prev());
-        })
+        });
+        $(".test").text("789");
     })
 </script>
 </body>

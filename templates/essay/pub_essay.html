@@ -155,7 +155,6 @@
             //ue菜单跟随scroll移动
             $(document).scroll(function(){
                 var scrollTop = parseInt($(document).scrollTop());
-                console.log("鼠标滚动了"+scrollTop);
                 var bottom = 0-scrollTop + 25 + "px";
                 $(".ue-inter-menu").animate({"bottom": bottom},20);
             });
@@ -211,33 +210,11 @@
 
             //编辑器提交方法
             function submitBox(what){
+                var how = $(".content-content").find(".on-editing");
                 var content = $(".temp-content").eq(0).val();
                 content = content.replace(/ /igm,"&nbsp;");
                 content = content.replace(/\n/igm,"<br>");
-                switch (what){
-                    case "标题":
-                        var box = $("<h3>" + content + "</h3>");
-                        break;
-                    case "内容":
-                        var box = $("<p>" + content + "</p>");
-                        break;
-                    case "代码":
-                        var box = $("<code>" + content + "</code>");
-                        break;
-                    case "列表":
-                        return false;
-                    case "图片":
-                        return false;
-                    case "颜色":
-                        return false;
-                    case "链接":
-                        return false;
-                    case "字体":
-                        return false;
-                    default:
-                        return false;
-                }
-                //box绑定操作按钮
+
                 var a = $("<a class='edit-span-box'></a>");
                 var upSpan = $("<span class='up-span primary'>▲</span>");
                 var downSpan = $("<span class='down-span info'>▼</span>");
@@ -248,8 +225,39 @@
                 $(a).append($(editSpan));
                 $(a).append($(removeSpan));
 
-                $(".content-content").append($(box));
-                $(box).append($(a));
+                //若存在正在编辑的元素，就是更新操作，否则插入
+                if(how.length!=0){
+                    $(how).text(content);
+                    $(how).append($(a));
+                    $(".content-content").find(".on-editing").removeClass("on-editing");
+                }else{
+                    switch (what){
+                        case "标题":
+                            var box = $("<h3 data='标题'>" + content + "</h3>");
+                            break;
+                        case "内容":
+                            var box = $("<p data='内容'>" + content + "</p>");
+                            break;
+                        case "代码":
+                            var box = $("<code data='代码'>" + content + "</code>");
+                            break;
+                        case "列表":
+                            return false;
+                        case "图片":
+                            return false;
+                        case "颜色":
+                            return false;
+                        case "链接":
+                            return false;
+                        case "字体":
+                            return false;
+                        default:
+                            return false;
+                    }
+                    //box绑定操作按钮
+                    $(".content-content").append($(box));
+                    $(box).append($(a));
+                }
                 closeBox();
             }
 
@@ -286,10 +294,12 @@
                     what = "字体";
                 }else if(e.altKey && e.keyCode == 74){
                     what = "加粗";
-                }else if(e.altKey && e.keyCode == 13){
+                }else if(e.ctrlKey && e.keyCode == 13){
                     what = $(".submit-btn").parent().siblings("p").text().slice(2, 4);
                     submitBox(what);
                     return;
+                }else if(e.keyCode == 27){
+                    closeBox();
                 }else{
                     what = "";
                     return;
@@ -318,10 +328,13 @@
             //编辑box事件：重新编辑
             $(document).on("click",".edit-span",function(){
                 var target = $(this).parent().parent();
+                var what = $(target).attr('data');
                 $(target).addClass("on-editing");
-                var content = $(target).text();
+                var content = $(target).contents().filter(function() {
+                    return this.nodeType === 3;
+                    }).text();
                 $(".temp-content").val(content);
-                openBox()
+                openBox(what);
 
             });
             //编辑box事件：删除
