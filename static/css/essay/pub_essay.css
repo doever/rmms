@@ -280,8 +280,10 @@
 }
 /*代码*/
 .content-content code{
-    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    /*font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;*/
+    font-family: 'Source Code Pro','DejaVu Sans Mono','Ubuntu Mono','Anonymous Pro','Droid Sans Mono',Menlo,Monaco,Consolas,Inconsolata,Courier,monospace,'PingFang SC','Microsoft YaHei',sans-serif!important;
     color:#2f2f2f;
+    /*color: #069!important;*/
     font-size: 15px;
     font-weight: 400;
     background-color: #f2f2f2;

@@ -212,8 +212,6 @@
             function submitBox(what){
                 var how = $(".content-content").find(".on-editing");
                 var content = $(".temp-content").eq(0).val();
-                content = content.replace(/ /igm,"&nbsp;");
-                content = content.replace(/\n/igm,"<br>");
 
                 var a = $("<a class='edit-span-box'></a>");
                 var upSpan = $("<span class='up-span primary'>▲</span>");
@@ -231,6 +229,8 @@
                     $(how).append($(a));
                     $(".content-content").find(".on-editing").removeClass("on-editing");
                 }else{
+                    content = content.replace(/ /igm,"&nbsp;");
+                    content = content.replace(/\n/igm,"<br>");
                     switch (what){
                         case "标题":
                             var box = $("<h3 data='标题'>" + content + "</h3>");
@@ -342,6 +342,11 @@
                 var moveBox = $(this).parent().parent();
                 $(moveBox).remove();
             });
+
+            // style-a
+            $(".style-a").click(function(){
+                $(".ueditor-inter").animate({"border-radius": "50%"});
+            })
         })
     </script>
 </body>
