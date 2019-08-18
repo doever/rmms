@@ -153,15 +153,33 @@
 
             /*交互式风格事件*/
             //ue菜单跟随scroll移动
+            $(document).scroll(function(){
+                var scrollTop = parseInt($(document).scrollTop());
+                console.log("鼠标滚动了"+scrollTop);
+                var bottom = 0-scrollTop + 25 + "px";
+                $(".ue-inter-menu").animate({"bottom": bottom},20);
+            });
 
+            function getTop(){
+                var height = parseInt(document.documentElement.clientHeight);
+                var scrollTop = parseInt($(document).scrollTop());
+                var top = height/2 + scrollTop + "px";
+                // console.log("文档的高度 is "+height);
+                // console.log("滚动的距离 is "+scrollTop);
+                // console.log("新的top is "+top);
+                return top;
+            }
             //编辑器关闭方法
-            $(".channel-btn").click(function(){
+            function closeBox(){
                 $(".vide").css({"transform":"scale(0)"});
                 $(".temp-content").val("");
                 $(".vide").hide();
-            });
+                var height = $(window).height();
+                $(".vide").css({"top": height+"px"});
+            }
             //编辑器打开方法
             function openBox(what){
+                var top = getTop();
                 switch (what){
                     case "标题":
                         break;
@@ -184,12 +202,12 @@
                     default:
                         return false;
                 }
+                $(".vide").css({"top":top});
                 $(".vide").find("p").eq(0).text("编辑" + what);
                 $(".vide").show();
                 $(".vide").css({"transform":"scale(1)"});
                 $(".temp-content").focus();
-
-            };
+            }
 
             //编辑器提交方法
             function submitBox(what){
@@ -232,18 +250,13 @@
 
                 $(".content-content").append($(box));
                 $(box).append($(a));
-                $(".vide").css({"transform":"scale(0)"});
-                $(".temp-content").val("");
-                $(".vide").hide();
-
+                closeBox();
             }
 
             //事件区
             //关闭按钮事件
             $(".channel-btn").click(function(){
-                $(".vide").css({"transform":"scale(0)"});
-                $(".temp-content").val("");
-                $(".vide").hide();
+                closeBox();
             });
             //按钮点击打开
             $(".ueditor-inter").click(function(){
@@ -279,6 +292,7 @@
                     return;
                 }else{
                     what = "";
+                    return;
                 }
                 openBox(what);
             });
@@ -288,7 +302,33 @@
                 var what = $(this).parent().siblings("p").text().slice(2, 4);
                 submitBox(what);
             });
+            //编辑box事件：上移
+            $(document).on("click",".up-span",function(e){
+                var moveBox = $(this).parent().parent();
+                $(moveBox).insertBefore($(moveBox).prev());
+                e.stopPropagation();
+            });
 
+            //编辑box事件：下移
+            $(document).on("click",".down-span",function(e){
+                var moveBox = $(this).parent().parent();
+                $(moveBox).insertAfter($(moveBox).next());
+                e.stopPropagation();
+            });
+            //编辑box事件：重新编辑
+            $(document).on("click",".edit-span",function(){
+                var target = $(this).parent().parent();
+                $(target).addClass("on-editing");
+                var content = $(target).text();
+                $(".temp-content").val(content);
+                openBox()
+
+            });
+            //编辑box事件：删除
+            $(document).on("click",".remove-span",function(){
+                var moveBox = $(this).parent().parent();
+                $(moveBox).remove();
+            });
         })
     </script>
 </body>
