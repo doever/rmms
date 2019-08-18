@@ -113,16 +113,14 @@
                         </div>
                         <div class="preview-box">
                             <div class="preview-title">正文预览</div>
-                            <div class="content-content">
-
-                            </div>
+                            <div class="content-content"></div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="write-content-box">
                 <div class="mask"></div>
-                <div class="vide" hidden>
+                <div class="vide">
                     <p class="title">编辑文本</p>
                     <textarea name="temp-content" class="temp-content"></textarea>
                     <div>
@@ -156,15 +154,14 @@
             /*交互式风格事件*/
             //ue菜单跟随scroll移动
 
-            //编辑器关闭事件
+            //编辑器关闭方法
             $(".channel-btn").click(function(){
                 $(".vide").css({"transform":"scale(0)"});
                 $(".temp-content").val("");
                 $(".vide").hide();
             });
-            //编辑器打开事件
-            $(".ueditor-inter").click(function(){
-                var what = $(this).text();
+            //编辑器打开方法
+            function openBox(what){
                 switch (what){
                     case "标题":
                         break;
@@ -182,17 +179,20 @@
                         return false;
                     case "字体":
                         return false;
+                    case "加粗":
+                        return false;
                     default:
                         return false;
                 }
                 $(".vide").find("p").eq(0).text("编辑" + what);
                 $(".vide").show();
                 $(".vide").css({"transform":"scale(1)"});
-            });
+                $(".temp-content").focus();
 
-            //编辑器提交事件
-            $(".submit-btn").click(function(){
-                var what = $(this).parent().siblings("p").text().slice(2, 4);
+            };
+
+            //编辑器提交方法
+            function submitBox(what){
                 var content = $(".temp-content").eq(0).val();
                 content = content.replace(/ /igm,"&nbsp;");
                 content = content.replace(/\n/igm,"<br>");
@@ -219,39 +219,76 @@
                     default:
                         return false;
                 }
+                //box绑定操作按钮
+                var a = $("<a class='edit-span-box'></a>");
+                var upSpan = $("<span class='up-span primary'>▲</span>");
+                var downSpan = $("<span class='down-span info'>▼</span>");
+                var editSpan = $("<span class='edit-span warnning'>☰</span>");
+                var removeSpan = $("<span class='remove-span dangerous'>X</span>");
+                $(a).append($(upSpan));
+                $(a).append($(downSpan));
+                $(a).append($(editSpan));
+                $(a).append($(removeSpan));
+
                 $(".content-content").append($(box));
+                $(box).append($(a));
                 $(".vide").css({"transform":"scale(0)"});
                 $(".temp-content").val("");
                 $(".vide").hide();
+
+            }
+
+            //事件区
+            //关闭按钮事件
+            $(".channel-btn").click(function(){
+                $(".vide").css({"transform":"scale(0)"});
+                $(".temp-content").val("");
+                $(".vide").hide();
+            });
+            //按钮点击打开
+            $(".ueditor-inter").click(function(){
+                var what = $(this).text();
+                openBox(what);
             });
             //键盘快速打开
             $(document).keydown(function(event){
                 var e = event || ev;
                 // var k = e.keyCode || e.which;
+                var what;
                 if(e.altKey && e.keyCode == 66){
-                    alert("111");
+                    what = "标题";
                 }else if(e.altKey && e.keyCode == 78){
-                    alert("222");
+                    what = "内容";
                 }else if(e.altKey && e.keyCode == 68){
-                    alert("333");
+                    what = "代码";
                 }else if(e.altKey && e.keyCode == 84){
-                    alert("444");
+                    what = "列表";
                 }else if(e.altKey && e.keyCode == 76){
-                    alert("555");
+                    what = "图片";
                 }else if(e.altKey && e.keyCode == 89){
-                    alert("666");
+                    what = "颜色";
                 }else if(e.altKey && e.keyCode == 65){
-                    alert("777");
+                    what = "链接";
                 }else if(e.altKey && e.keyCode == 90){
-                    alert("888");
+                    what = "字体";
                 }else if(e.altKey && e.keyCode == 74){
-                    alert("999");
+                    what = "加粗";
                 }else if(e.altKey && e.keyCode == 13){
-                    alert("enter");
+                    what = $(".submit-btn").parent().siblings("p").text().slice(2, 4);
+                    submitBox(what);
+                    return;
                 }else{
-                    // return false;
+                    what = "";
                 }
-            })
+                openBox(what);
+            });
+
+            //提交按钮事件
+            $(".submit-btn").click(function(){
+                var what = $(this).parent().siblings("p").text().slice(2, 4);
+                submitBox(what);
+            });
+
         })
     </script>
 </body>

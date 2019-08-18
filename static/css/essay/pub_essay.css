@@ -210,6 +210,7 @@
 }
 .vide{
     /*display: none;*/
+    /*opacity: 0;*/
     width: 500px;
     height: 300px;
     background-color: #f2f2f2;
@@ -223,7 +224,7 @@
     margin-left: -250px;
     margin-top: -150px;
     /*transform: translate(-50%,-50%);*/
-    transform: scale(0.2);
+    transform: scale(0);
     transition: all .75s;
 }
 .vide>p{
@@ -264,6 +265,8 @@
     color: #2f2f2f;
     line-height: 1.7;
     margin-bottom: 25px;
+    position: relative;
+    box-sizing: border-box;
 }
 /*正文*/
 .content-content p{
@@ -272,6 +275,8 @@
     line-height: 1.7;
     color: #2f2f2f;
     margin-bottom: 25px;
+    position: relative;
+    box-sizing: border-box;
 }
 /*代码*/
 .content-content code{
@@ -284,7 +289,62 @@
     line-height: 1.5;
     display: block;
     margin-bottom: 15px;
+    position: relative;
+    box-sizing: border-box;
 }
+.content-content h3:hover{
+    border: 1px solid #c2c2c2;
+    box-shadow: 0 0 10px #F0725C;
+}
+.content-content h3:hover .edit-span-box{
+    visibility:visible;
+}
+.content-content p:hover{
+    border: 1px solid #c2c2c2;
+    box-shadow: 0 0 10px #F0725C;
+}
+.content-content p:hover .edit-span-box{
+    visibility:visible;
+}
+.content-content code:hover{
+    border: 1px solid #c2c2c2;
+    box-shadow: 0 0 10px #F0725C;
+}
+.content-content code:hover .edit-span-box{
+    visibility:visible;
+}
+
+.content-content .edit-span-box{
+    position: absolute;
+    top: -2px;
+    right: 0;
+    display: inline-block;
+    visibility:hidden;
+}
+.content-content .edit-span-box span{
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-right: 8px;
+    line-height: 20px;
+}
+/*.content-content .up-span{*/
+    /*background-color: #fff;*/
+/*}*/
+/*.content-content .down-span{*/
+    /*background-color: #fff;*/
+/*}*/
+/*.content-content .edit-span{*/
+    /*background-color: #fff;*/
+/*}*/
+/*.content-content .remove-span{*/
+    /*background-color: #fff;*/
+/*}*/
 
 
 
