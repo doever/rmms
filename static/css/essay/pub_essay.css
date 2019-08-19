@@ -315,6 +315,10 @@
 .content-content code:hover .edit-span-box{
     visibility:visible;
 }
+.content-content code i{
+    color: #069;
+    font-style: normal;
+}
 
 .content-content .edit-span-box{
     position: absolute;

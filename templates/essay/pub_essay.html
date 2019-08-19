@@ -124,7 +124,7 @@
                     <p class="title">编辑文本</p>
                     <textarea name="temp-content" class="temp-content"></textarea>
                     <div>
-                        <button class="com-btn info submit-btn">确定</button>
+                        <button class="com-btn info submit-btn" ttype="insert" id="submit-btn">确定</button>
                         <button class="com-btn warnning channel-btn">取消</button>
                     </div>
                 </div>
@@ -210,9 +210,11 @@
 
             //编辑器提交方法
             function submitBox(what){
-                var how = $(".content-content").find(".on-editing");
+                var ttype= $("#submit-btn").attr("ttype");
                 var content = $(".temp-content").eq(0).val();
-
+                content = content.replace(/ /igm,"&nbsp;");
+                content = content.replace(/\n/igm,"<br>");
+                content = keyWord(content);
                 var a = $("<a class='edit-span-box'></a>");
                 var upSpan = $("<span class='up-span primary'>▲</span>");
                 var downSpan = $("<span class='down-span info'>▼</span>");
@@ -223,23 +225,25 @@
                 $(a).append($(editSpan));
                 $(a).append($(removeSpan));
 
-                //若存在正在编辑的元素，就是更新操作，否则插入
-                if(how.length!=0){
-                    $(how).text(content);
-                    $(how).append($(a));
-                    $(".content-content").find(".on-editing").removeClass("on-editing");
+                //若类型不是insert，就是更新操作，否则插入
+                if(ttype=="update"){
+                    $(target).html(content);
+                    $(target).append($(a));
+                    $("#submit-btn").attr("ttype","insert");
                 }else{
-                    content = content.replace(/ /igm,"&nbsp;");
-                    content = content.replace(/\n/igm,"<br>");
+
                     switch (what){
                         case "标题":
-                            var box = $("<h3 data='标题'>" + content + "</h3>");
+                            var box = $("<h3>" + content + "</h3>");
+                            $(editSpan).attr("data","标题");
                             break;
                         case "内容":
-                            var box = $("<p data='内容'>" + content + "</p>");
+                            var box = $("<p>" + content + "</p>");
+                            $(editSpan).attr("data","内容");
                             break;
                         case "代码":
-                            var box = $("<code data='代码'>" + content + "</code>");
+                            var box = $("<code>" + content + "</code>");
+                            $(editSpan).attr("data","代码");
                             break;
                         case "列表":
                             return false;
@@ -259,6 +263,17 @@
                     $(box).append($(a));
                 }
                 closeBox();
+            }
+            //关键字替换方法
+            function keyWord(content){
+                var keyWordList = ['function','def','print','import','public','private','for','self','try','catch','except',
+                    'char','var','datetime','class','select','insert','update','delete','from','while','when','where','group','order',
+                    'create','index','table','column','case','switch','break','continue','return','else','if' ,'by', 'in', 'desc'];
+                for(var i=0;i<keyWordList.length;i++){
+                    var reg = '/'+ keyWordList[i] +'/igm';
+                    content = content.replace(eval(reg), "<i>" + keyWordList[i] + "</i>");
+                }
+                return content;
             }
 
             //事件区
@@ -280,7 +295,7 @@
                     what = "标题";
                 }else if(e.altKey && e.keyCode == 78){
                     what = "内容";
-                }else if(e.altKey && e.keyCode == 68){
+                }else if(e.altKey && e.keyCode == 67){
                     what = "代码";
                 }else if(e.altKey && e.keyCode == 84){
                     what = "列表";
@@ -327,12 +342,18 @@
             });
             //编辑box事件：重新编辑
             $(document).on("click",".edit-span",function(){
-                var target = $(this).parent().parent();
-                var what = $(target).attr('data');
-                $(target).addClass("on-editing");
-                var content = $(target).contents().filter(function() {
-                    return this.nodeType === 3;
-                    }).text();
+                $("#submit-btn").attr("ttype","update");
+                target = $(this).parent().parent();
+                var what = $(this).attr('data');
+                var content = $(target).html();
+                content = content.replace(/<a.*?<\/a>/igm, '');
+                content = content.replace(/&nbsp;/igm, ' ');
+                content = content.replace(/<br>/igm, '\n');
+                content = content.replace(/<i>/igm, '');
+                content = content.replace(/<\/i>/igm, '');
+                // var content = $(target).contents().filter(function() {
+                //     return this.nodeType === 3;
+                //     }).text();
                 $(".temp-content").val(content);
                 openBox(what);
 
