@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../static/css/essay/pub_essay.css">
     <script src="../../static/js/jquery-3.1.1.min.js"></script>
     <script src="../../static/js/common.js"></script>
+    <script src="../../static/layer/layer.js"></script>
 </head>
 <body>
     <div class="head">
@@ -55,7 +56,7 @@
             <div class="form-wrapper">
                 <div class="title-box">
                     <label>文章标题</label>
-                    <input type="text" class="input-group">
+                    <input type="text" class="input-group" name="title">
                 </div>
                 <div class="category-box">
                     <label>文章分类</label>
@@ -76,7 +77,7 @@
                     <label>编辑内容</label>
                     <div class="button-box">
                         <button id="mark-button" class="com-btn info">标记式编辑</button><button id="inter-button" class="com-btn">交互式编辑</button>
-                        <button class="com-btn pub-essay-btn main-color">发布文章</button>
+                        <button class="com-btn pub-essay-btn main-color" way="mark">发布文章</button>
                     </div>
                     <div class="ue-mark-box">
                         <div class="ue-mark-menu">
@@ -137,6 +138,7 @@
             $("#mark-button").click(function(){
                 $(this).siblings().removeClass("info");
                 $(this).addClass("info");
+                $(".pub-essay-btn").attr("way","mark");
                 $(".ue-inter-box").animate({"opacity":0}, 200);
                 $(".ue-inter-box").hide();
                 $(".ue-mark-box").show();
@@ -145,6 +147,7 @@
             $("#inter-button").click(function(){
                 $(this).siblings().removeClass("info");
                 $(this).addClass("info");
+                $(".pub-essay-btn").attr("way","inter");
                 $(".ue-mark-box").animate({"opacity":0}, 200);
                 $(".ue-mark-box").hide();
                 $(".ue-inter-box").show();
@@ -266,11 +269,11 @@
             }
             //关键字替换方法
             function keyWord(content){
-                var keyWordList = ['function','def','print','import','public','private','for','self','try','catch','except',
+                var keyWordList = ['function','def','print','this','import','public','private','for','self','try','catch','except',
                     'char','var','datetime','class','select','insert','update','delete','from','while','when','where','group','order',
                     'create','index','table','column','case','switch','break','continue','return','else','if' ,'by', 'in', 'desc'];
                 for(var i=0;i<keyWordList.length;i++){
-                    var reg = '/'+ keyWordList[i] +'/igm';
+                    var reg = '/'+ keyWordList[i].toLowerCase() +'/igm';
                     content = content.replace(eval(reg), "<i>" + keyWordList[i] + "</i>");
                 }
                 return content;
@@ -367,7 +370,53 @@
             // style-a
             $(".style-a").click(function(){
                 $(".ueditor-inter").animate({"border-radius": "50%"});
-            })
+            });
+            // style-b
+            $(".style-b").click(function(){
+                $(".ueditor-inter").animate({"transform": "rotate(0deg)"});
+            });
+            // style-c
+            $(".style-c").click(function(){
+                $(".ueditor-inter").animate({"background-color": "black"});
+            });
+
+            //发布文章功能
+            $(".pub-essay-btn").click(function(){
+                var title = $("input[name='title']").val();
+                var category = $("select[name='category'] option:checked").val();
+                var thumbnail = $("input[name='thumbnail']").val();
+                var way = $(this).attr('way');
+                var author = $(".user-info").find(".dropdown-toggle").text();
+                if(way=='mark'){
+                    var content = $("textarea[name='content-desc']").val();
+                }else{
+                    var content = $(".content-content").html();
+                }
+                $.ajax({
+                    url:"/pub_essay",
+                    type:'POST',
+                    data : {
+                            "title":title,
+                            "category":category,
+                            "thumbnail":thumbnail,
+                            "content":content,
+                            "way":way,
+                            "author":author
+                            },
+                    dataType: "json",
+                    success:function(result){
+                        if(result['code']===200){
+                            window.location.href = '/essay_deail?essayid='+result['message'];
+                        }else{
+                            layer.msg(result['message']);
+                        }
+                    },
+                    error:function(error){
+                        layer.msg("服务器内部错误" + error.toString());
+                    }
+
+                })
+            });
         })
     </script>
 </body>
