@@ -50,6 +50,24 @@ class Model(BaseModel):
         return "essay model object"
 
 
+class Field:
+    def __init__(self, name, column_type, primary_key, default_value):
+        self.name = name
+        self.column_type = column_type
+        self.primary_key = primary_key
+        self.default_value = default_value
+
+
+class StringField(Field):
+    def __init__(self, name, column_type='varchar(100)', primary_key=False, default_value=None):
+        super().__init__(name, column_type, primary_key, default_value)
+
+
+class IntegerField(Field):
+    def __init__(self, name, primary_key=False, default_value=0):
+        super().__init__(name, 'int', primary_key, default_value)
+
+
 db = Model(DATABASE.get("essay"))
 
 if __name__ == '__main__':
