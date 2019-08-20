@@ -200,7 +200,12 @@
 .preview-title{
     padding: 25px 0px;
 }
-
+.preview-box>h1{
+    font-size: 35px;
+    padding: 15px 0;
+    font-weight: 700;
+    line-height: 1.7;
+}
 /*隐藏box*/
 .write-content-box{
 

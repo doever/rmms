@@ -155,6 +155,13 @@
             });
 
             /*交互式风格事件*/
+            //标题自动填充
+            $("input[name='title']").blur(function(){
+                $(".preview-title").siblings('h1').remove();
+                var title = $(this).val();
+                var hObj = $("<h1>" + title + "</h1>");
+                $(".preview-title").after(hObj);
+            });
             //ue菜单跟随scroll移动
             $(document).scroll(function(){
                 var scrollTop = parseInt($(document).scrollTop());
@@ -284,10 +291,29 @@
             $(".channel-btn").click(function(){
                 closeBox();
             });
-            //按钮点击打开
+            //UE菜单按钮点击打开
             $(".ueditor-inter").click(function(){
                 var what = $(this).text();
                 openBox(what);
+            });
+            //UE菜单按钮智能提醒
+            $(".ueditor-inter").mouseover(function(){
+                var menuName = $(this).text().slice(2, 4);
+                switch (menuName){
+                    case "标题":
+                        menuTip = "alt+b";
+                        break;
+                    case "内容":
+                        menuTip = "alt+n";
+                        break;
+                    case "代码":
+                        menuTip = "alt+c";
+                        break;
+                    default:
+                        menuTip = "alt+b";
+                        break;
+                }
+                layer.tips("按住"+menuTip+"可快速编辑"+menuName,$(this));
             });
             //键盘快速打开
             $(document).keydown(function(event){
