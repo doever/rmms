@@ -6,6 +6,7 @@ from urllib import parse
 class Request():
 	def __init__(self, environ):
 		self._clean_request(environ)
+		# self.print_environ(environ)
 
 	def _clean_request(self, environ):
 		'''
@@ -40,11 +41,11 @@ class Request():
 			return parse.parse_qs(d)['keys'][0]
 		return _s
 
-	def print_environ(self):
+	def print_environ(self, environ):
 		'''
 		打印请求的环境变量
 		'''
 		print("*"*50)
-		for k, v in self.environ.items():
+		for k, v in environ.items():
 			print(k+":"+str(v))
 		print("*"*50)

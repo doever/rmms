@@ -11,44 +11,13 @@ from io import BytesIO
 import setting
 from urls import urls
 from tools import print_log, tprint, print_info
-
-
-class Request():
-    def __init__(self):
-        self.method = ''
-        self.path = ''
-        self.content_type = ''
-        self.cookie = {}
-        self.GET = {}
-        self.POST = {}
-
-    @staticmethod
-    def url_decode(_s):
-        '''urlencode解码'''
-        if _s:
-            d = "keys=" + _s
-            return parse.parse_qs(d)['keys'][0]
-        return _s
+from rmms.https.request import Request
 
 
 def application(environ, start_response):
-    # for k, v in environ.items():
-    #     print(k+":"+str(v))
+    '''请求的入口'''
+    request = Request(environ)
 
-    request = Request()
-    request.method = environ.get('REQUEST_METHOD')
-    request.path = environ.get('PATH_INFO')
-    request.content_type = environ.get('CONTENT_TYPE')
-    length = environ.get('CONTENT_LENGTH') or 0
-    # 构造request get请求参数
-    request.GET = parse_di(environ.get('QUERY_STRING'))
-    # 构造request post请求参数
-    request.POST = parse_di(environ.get('wsgi.input').read(int(length)).decode())
-    request.POST = {k: request.url_decode(v) for k, v in request.POST.items()}
-    request.cookie = environ.get('HTTP_COOKIE') or ''
-    request.user = parse_di(request.cookie)
-
-    res = {}
     for i in range(len(urls)):
         if urls[i][0] == request.path:
             tprint(urls[i][0])
@@ -130,14 +99,5 @@ def error_404(start_response, path):
     return [bytes('<h1>404 the pages you request was stolen by the martians...</h1>', encoding="utf-8")]
 
 
-def parse_di(url):
-    if url:
-        li = url.split('&')
-        new_li = [[i.split("=")[0], i.split("=")[1]] for i in li]
-        return dict(new_li)
-    return {}
-
-
 if __name__ == '__main__':
-    res = parse_di("username=cl&page=123")
-    print(res)
+    pass
