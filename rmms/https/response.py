@@ -4,6 +4,7 @@ import json
 
 class ResponseBase(dict):
     def __init__(self, code=None, content_type=None, content=None, kwargs=None):
+        super().__init__()
         self.code = code
         self.content_type = content_type
         self.content = content

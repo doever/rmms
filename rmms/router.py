@@ -12,6 +12,7 @@ import setting
 from urls import urls
 from tools import print_log, tprint, print_info
 from rmms.https.request import Request
+from rmms.https.handle_static import StaticHandle
 
 
 def application(environ, start_response):
@@ -26,26 +27,26 @@ def application(environ, start_response):
         else:
             continue
     else:
-        code = '200 OK'
-        a = request.path[-3:]
-        if re.search(r'.css', request.path):
-            content_type = "text/css"
-            content = handle_static(request.path)
-        elif re.search(r'.js', request.path):
-            content_type = "application/x-javascript"
-            content = handle_static(request.path)
-        elif request.path[-3:] in setting.IMAGE_FORMAT:
-            content_type = "image/jpeg"
-            content = handle_image(request.path)
-            start_response(code, [('Content-Type', content_type)])
-            return [bytes(content)]
-        # 404 error
-        else:
-            tprint(request.path)
-            return error_404(start_response, request.path)
-
-        start_response(code, [('Content-Type', content_type)])
-        return [bytes(content, encoding="utf-8")]
+        # code = '200 OK'
+        # a = request.path[-3:]
+        # if re.search(r'.css', request.path):
+        #     content_type = "text/css"
+        #     content = handle_static(request.path)
+        # elif re.search(r'.js', request.path):
+        #     content_type = "application/x-javascript"
+        #     content = handle_static(request.path)
+        # elif request.path[-3:] in setting.IMAGE_FORMAT:
+        #     content_type = "image/jpeg"
+        #     content = handle_image(request.path)
+        #     start_response(code, [('Content-Type', content_type)])
+        #     return [bytes(content)]
+        # # 404 error
+        # else:
+        #     tprint(request.path)
+        #     return error_404(start_response, request.path)
+        res = StaticHandle(request.path)
+        # start_response(code, [('Content-Type', content_type)])
+        # return [bytes(content, encoding="utf-8")]
 
     if not res:
         return error_404(start_response, request.path)
@@ -61,9 +62,10 @@ def application(environ, start_response):
     else:
         start_response(code, [('Content-Type', content_type)])
 
-    del request
-
-    return [bytes(content, encoding="utf-8")]
+    if re.search('\.image', request.path.split("/")[-1]):
+        return [bytes(content, encoding="utf-8")]
+    else:
+        return [bytes(content, encoding="utf-8")]
 
 
 def handle_static(path):
