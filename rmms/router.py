@@ -5,12 +5,11 @@ __date__ = '2019/8/7 20:48'
 
 import os
 import re
-from urllib import parse
-from io import BytesIO
+
 
 import setting
 from urls import urls
-from tools import print_log, tprint, print_info
+from tools import print_log, tprint
 from rmms.https.request import Request
 from rmms.https.handle_static import StaticHandle
 
