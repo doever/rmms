@@ -58,6 +58,14 @@ def pub_essay(request):
         return restful.ok(message=id)
 
 
+def user_info(request):
+    '''用户资料设置'''
+    if request.method == "GET":
+        return renter("essay:user_info.html")
+    else:
+        pass
+
+
 if __name__ == '__main__':
     print("test ok!!")
 

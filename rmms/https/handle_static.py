@@ -12,9 +12,10 @@ class StaticHandle(dict):
         self.code = '200 OK'
         self.content_type = ''
         self.content = ''
+        self._handle()
 
     def _handle(self):
-        file_name = self.path.split("/")
+        file_name = self.path.split("/")[-1]
         if re.search('\.css', file_name):
             self.content_type = 'text/css'
             self.handle_static()

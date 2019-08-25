@@ -21,6 +21,10 @@ url = [
         ('/essay_detail', essay_detail),
         # 发布文章
         ('/pub_essay', pub_essay),
+        # 用户主页
+        ('/pub_essay', pub_essay),
+        # 用户资料设置
+        ('/user_info', user_info),
        ]
 
 if __name__ == '__main__':
