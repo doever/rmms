@@ -48,32 +48,6 @@ def application(environ, start_response):
         return [bytes(content, encoding="utf-8")]
 
 
-def handle_static(path):
-    ''''处理js、css文件'''
-    static_file = setting.BASE_PATH
-    file_path_li = path.split("/")
-    for i in file_path_li:
-        static_file = os.path.join(static_file, i)
-
-    with open(static_file, 'r', encoding='UTF-8') as f:
-        text = f.read()
-        f.close()
-
-    return text
-
-
-def handle_image(path):
-    image = setting.BASE_PATH
-    path_li = path.split('/')
-    for i in path_li:
-        image = os.path.join(image, i)
-    with open(image, 'rb') as f:
-        content_byte = f.read()
-        f.close()
-
-    return content_byte
-
-
 def error_404(start_response, path):
     mes = f"请求url地址错误,出错地址'{path}'"
     print_log(error_404.__name__, mes)
