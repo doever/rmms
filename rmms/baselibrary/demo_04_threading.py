@@ -27,15 +27,14 @@ def how_mach_time(f):
     return wrapper
 
 
-# @how_mach_time
+@how_mach_time
 def thread_run():
-    time1 = time.time()
     t1 = threading.Thread(target=print_thread)
     t2 = threading.Thread(target=draw_thread)
     t1.start()
     t2.start()
-    time2 = time.time()
-    print(time2-time1)
+    t1.join()
+    t2.join()
 
 
 @how_mach_time
