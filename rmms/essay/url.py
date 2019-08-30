@@ -15,6 +15,8 @@ from rmms.essay.view import *
 url = [
         # 登录页面
         ('/login', login),
+        # 注册
+        ('/login', register),
         # 首页
         ('/essay_index', index),
         # 文章详情页

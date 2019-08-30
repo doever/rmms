@@ -23,6 +23,21 @@ def login(request):
         return renter("essay:essay_detail.html", {"cookie": cookie})
 
 
+def register(request):
+    if request.method == "GET":
+        return renter("essay:register.html")
+    else:
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        re_password = request.POST.get("re_password")
+        telephone = request.POST.get("telephone")
+        email = request.POST.get("email")
+        avator = request.POST.get("avator")
+        # 验证form
+        # db.insert(...)
+        # return ok and rediert
+
+
 def index(request):
     '''首页'''
     if request.method == "GET":
@@ -54,6 +69,7 @@ def pub_essay(request):
         id = int(time.time())
         userid = request.user.get('userid')
         date = str(datetime.now())[0:19]
+        # orm封装
         db.insert(f"insert into essay values({id},{userid},'{thumbnail}','{title}','{content}','{category}',100,0,100,'1','{date}',0,0,'','','')")
         return restful.ok(message=id)
 
