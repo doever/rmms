@@ -1,0 +1,10 @@
+05-02-2019 21:02:27 root:DEBUG:This is a debug message
+05-02-2019 21:02:27 root:INFO:This is an info message
+05-02-2019 21:02:27 root:WARNING:This is a warning message
+05-02-2019 21:02:27 root:ERROR:This is an error message
+05-02-2019 21:02:27 root:CRITICAL:This is a critical message
+05-02-2019 21:02:52 root:DEBUG:This is a debug message
+05-02-2019 21:02:52 root:INFO:This is an info message
+05-02-2019 21:02:52 root:WARNING:This is a warning message
+05-02-2019 21:02:52 root:ERROR:This is an error message
+05-02-2019 21:02:52 root:CRITICAL:This is a critical message

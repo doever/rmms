@@ -1,0 +1,15 @@
+05-05-2019 21:05:49 root:ERROR:Exception occurred
+Traceback (most recent call last):
+  File "D:/doever/gitcode_ano/rmms/rmms/baselibrary/demo_09_logging.py", line 32, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
+05-05-2019 21:05:49 root:ERROR:Exception occurred
+Traceback (most recent call last):
+  File "D:/doever/gitcode_ano/rmms/rmms/baselibrary/demo_09_logging.py", line 32, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
+05-05-2019 21:05:49 root:DEBUG:Exception occurred
+Traceback (most recent call last):
+  File "D:/doever/gitcode_ano/rmms/rmms/baselibrary/demo_09_logging.py", line 32, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
