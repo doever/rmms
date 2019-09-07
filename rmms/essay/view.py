@@ -69,7 +69,7 @@ def pub_essay(request):
         id = int(time.time())
         userid = request.user.get('userid')
         date = str(datetime.now())[0:19]
-        # orm封装
+        # todo:orm封装
         db.insert(f"insert into essay values({id},{userid},'{thumbnail}','{title}','{content}','{category}',100,0,100,'1','{date}',0,0,'','','')")
         return restful.ok(message=id)
 

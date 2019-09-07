@@ -14,14 +14,26 @@ class Field(object):
 
 class StringField(Field):
 
-    def __init__(self, name):
-        super(StringField, self).__init__(name, 'varchar(100)')
+    def __init__(self, name, length):
+        super(StringField, self).__init__(name, f'varchar({length})')
 
 
 class IntegerField(Field):
 
     def __init__(self, name):
-        super(IntegerField, self).__init__(name, 'bigint')
+        super(IntegerField, self).__init__(name, 'int')
+
+
+class CharField(Field):
+
+    def __init__(self, name, length):
+        super(CharField, self).__init__(name, f'char({length})')
+
+
+class TextField(Field):
+
+    def __init__(self, name):
+        super(TextField, self).__init__(name, 'text')
 
 
 class ModelMetaclass(type):

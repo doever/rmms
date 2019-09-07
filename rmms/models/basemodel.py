@@ -3,6 +3,10 @@
 __author__ = 'doever'
 __date__ = '2019/8/11 11:58'
 
+'''
+数据库连接池
+'''
+
 import sqlite3
 from tools import print_log
 from setting import DATABASE
@@ -48,24 +52,6 @@ class Model(BaseModel):
 
     def __str__(self):
         return "essay model object"
-
-
-class Field:
-    def __init__(self, name, column_type, primary_key, default_value):
-        self.name = name
-        self.column_type = column_type
-        self.primary_key = primary_key
-        self.default_value = default_value
-
-
-class StringField(Field):
-    def __init__(self, name, column_type='varchar(100)', primary_key=False, default_value=None):
-        super().__init__(name, column_type, primary_key, default_value)
-
-
-class IntegerField(Field):
-    def __init__(self, name, primary_key=False, default_value=0):
-        super().__init__(name, 'int', primary_key, default_value)
 
 
 db = Model(DATABASE.get("essay"))
