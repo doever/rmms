@@ -36,6 +36,12 @@ class TextField(Field):
         super(TextField, self).__init__(name, 'text')
 
 
+class DateField(Field):
+
+    def __init__(self, name):
+        super(DateField, self).__init__(name, 'date')
+
+
 class ModelMetaclass(type):
 
     def __new__(cls, name, bases, attrs):
@@ -80,13 +86,28 @@ class Model(dict, metaclass=ModelMetaclass):
         print('SQL: %s' % sql)
         print('ARGS: %s' % str(args))
 
+    def db_query(self):
+        pass
+
+    def db_select(self):
+        pass
+
+    def db_update(self):
+        pass
+
+    def db_delete(self):
+        pass
+
+    def db_insert(self):
+        pass
+
 
 class User(Model):
     # 定义类的属性到列的映射：
     id = IntegerField('id')
-    name = StringField('username')
-    email = StringField('email')
-    password = StringField('password')
+    name = StringField('username', 50)
+    email = StringField('email', 50)
+    password = StringField('password', 50)
 
 
 if __name__ == '__main__':
