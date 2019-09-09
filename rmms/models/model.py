@@ -21,6 +21,7 @@ class StringField(Field):
 class IntegerField(Field):
 
     def __init__(self, name):
+        assert isinstance(name, int), "传入类型错误"
         super(IntegerField, self).__init__(name, 'int')
 
 
@@ -45,7 +46,7 @@ class DateField(Field):
 class ModelMetaclass(type):
 
     def __new__(cls, name, bases, attrs):
-        if name=='Model':
+        if name == 'Model':
             return type.__new__(cls, name, bases, attrs)
         print('Found model: %s' % name)
         mappings = dict()
