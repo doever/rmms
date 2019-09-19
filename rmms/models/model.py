@@ -1,5 +1,7 @@
-#!/usr/bin/python3
 # -*- coding:utf-8 -*-
+
+from rmms.models.db_conn import pool
+from rmms.utils.log import db_log
 
 
 class Field(object):
@@ -21,7 +23,7 @@ class StringField(Field):
 class IntegerField(Field):
 
     def __init__(self, name):
-        assert isinstance(name, int), "传入类型错误"
+        # assert isinstance(name, int), "传入类型错误"
         super(IntegerField, self).__init__(name, 'int')
 
 
@@ -56,8 +58,8 @@ class ModelMetaclass(type):
                 mappings[k] = v
         for k in mappings.keys():
             attrs.pop(k)
-        attrs['__mappings__'] = mappings # 保存属性和列的映射关系
-        attrs['__table__'] = name # 假设表名和类名一致
+        attrs['__mappings__'] = mappings  # 保存属性和列的映射关系
+        attrs['__table__'] = name  # 表名和类名一致
         return type.__new__(cls, name, bases, attrs)
 
 
@@ -75,17 +77,29 @@ class Model(dict, metaclass=ModelMetaclass):
     def __setattr__(self, key, value):
         self[key] = value
 
+    @staticmethod
+    def _execute_sql(sql):
+        res = None
+        conn = pool.get()
+        cursor = conn.cursor()
+        try:
+            cursor.execute(sql)
+        except Exception as err:
+            db_log.info(f"执行sql发生错误：{err}")
+        else:
+            res = cursor.fetchall()
+            conn.commit()
+            pool.free(conn)  # 放回数据库链接
+        return res
+
     def save(self):
         fields = []
-        params = []
         args = []
         for k, v in self.__mappings__.items():
             fields.append(v.name)
-            params.append('?')
             args.append(getattr(self, k, None))
-        sql = 'insert into %s (%s) values (%s)' % (self.__table__, ','.join(fields), ','.join(params))
-        print('SQL: %s' % sql)
-        print('ARGS: %s' % str(args))
+        sql = 'insert into %s (%s) values (%s)' % (self.__table__, ','.join(fields), str(args)[1:-1])
+        self._execute_sql(sql)
 
     def db_query(self):
         pass
