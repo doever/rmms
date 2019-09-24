@@ -8,7 +8,8 @@ __date__ = '2019/8/11 11:58'
 '''
 
 import sqlite3
-from tools import print_log
+
+from rmms.utils.log import server_log
 from setting import DATABASE
 
 
@@ -22,7 +23,7 @@ class BaseModel(object):
         try:
             self.cursor.execute(sql)
         except Exception as err:
-            print_log("execute_sql", "执行sql报错：" + str(err))
+            server_log.info("execute_sql", "执行sql报错：" + str(err))
             # self.cursor.close()
             # self.conn.close()
         else:
@@ -57,6 +58,6 @@ class Model(BaseModel):
 db = Model(DATABASE.get("essay"))
 
 if __name__ == '__main__':
-    print_log('xxx', 'error')
+    pass
 
 

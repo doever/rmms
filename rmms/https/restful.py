@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from rmms.shortcuts import json_response
+from rmms.https.shortcuts import json_response
 
 
 class HttpCode(object):

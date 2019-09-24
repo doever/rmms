@@ -9,7 +9,7 @@ import re
 
 import setting
 from urls import urls
-from tools import print_log, tprint
+from rmms.utils.log import server_log
 from rmms.https.request import Request
 from rmms.https.handle_static import StaticHandle
 
@@ -20,7 +20,7 @@ def application(environ, start_response):
 
     for i in range(len(urls)):
         if urls[i][0] == request.path:
-            tprint(urls[i][0])
+            # server_log.info(urls[i][0])
             res = urls[i][1](request)
             break
         else:
@@ -50,7 +50,7 @@ def application(environ, start_response):
 
 def error_404(start_response, path):
     mes = f"请求url地址错误,出错地址'{path}'"
-    print_log(error_404.__name__, mes)
+    server_log.info(error_404.__name__, mes)
     start_response('404 not found', [('Content-Type', 'text/html')])
     return [bytes('<h1>404 the pages you request was stolen by the martians...</h1>', encoding="utf-8")]
 

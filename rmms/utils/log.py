@@ -2,9 +2,7 @@
 # -*- coding:utf-8 -*-
 
 import os
-
 import logging
-
 from logging.handlers import TimedRotatingFileHandler
 
 # 日志级别
@@ -82,7 +80,7 @@ class LogHandler(logging.Logger):
         self.__setFileHandler__()
 
 
-db_log = LogHandler('db_execute')
+server_log = LogHandler('server_log')
 
 if __name__ == '__main__':
     log = LogHandler('test')

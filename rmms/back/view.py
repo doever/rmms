@@ -3,10 +3,10 @@
 __author__ = 'doever'
 __date__ = '2019/8/16 22:43'
 
-from rmms import restful
-from rmms.shortcuts import renter, json_response
-from rmms.basemodel import db
-from rmms.tools import print_info
+from rmms.https import restful
+from rmms.https.shortcuts import renter, json_response
+from rmms.models.basemodel import db
+from rmms.utils.tools import print_info
 
 
 def sql(request):
